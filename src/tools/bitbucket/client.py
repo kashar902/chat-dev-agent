@@ -8,11 +8,11 @@ class BitbucketClient:
     BASE_URL = "https://api.bitbucket.org/2.0"
 
     def __init__(self):
-        self.auth = (settings.bitbucket_username, settings.bitbucket_app_password)
+        self.headers = {"Authorization": f"Bearer {settings.bitbucket_api_token}"}
         self.workspace = settings.bitbucket_workspace
 
     def _client(self) -> httpx.Client:
-        return httpx.Client(auth=self.auth, timeout=30.0)
+        return httpx.Client(headers=self.headers, timeout=30.0)
 
     def _get(self, path: str, params: dict | None = None) -> Any:
         url = f"{self.BASE_URL}{path}"

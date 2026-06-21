@@ -16,7 +16,7 @@ class GitManager:
         repo_path = self._repo_path(repo_slug)
         if repo_path.exists():
             shutil.rmtree(repo_path)
-        url = f"https://{settings.bitbucket_username}:{settings.bitbucket_app_password}@bitbucket.org/{settings.bitbucket_workspace}/{repo_slug}.git"
+        url = f"https://x-token-auth:{settings.bitbucket_api_token}@bitbucket.org/{settings.bitbucket_workspace}/{repo_slug}.git"
         logger.info(f"Cloning {repo_slug} into {repo_path}")
         repo = git.Repo.clone_from(url, str(repo_path), branch=branch)
         return repo

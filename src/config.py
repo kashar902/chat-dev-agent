@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     bitbucket_workspace: str = ""
     bitbucket_username: str = ""
-    bitbucket_app_password: str = ""
+    bitbucket_api_token: str = ""
     google_chat_space_id: str = ""
     repos_dir: str = "./repos"
     model_name: str = "gpt-4o"
